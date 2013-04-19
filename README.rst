@@ -10,5 +10,5 @@ using `Sphinx`_ as the provider for my website for three reasons:
 #. Sphinx comes with built in searching.
 
 
-_Sphinx: http://sphinx-doc.org
-_trevor.bramwell.net: http://trevor.bramwell.net
+.. _Sphinx: http://sphinx-doc.org
+.. _trevor.bramwell.net: http://trevor.bramwell.net
