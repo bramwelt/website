@@ -17,8 +17,8 @@ When I have free time, I like hacking on open source projects_, writing my book_
 
 .. _`Ganeti Web Manager`: http://code.osuosl.org/projects/ganeti-webmgr
 .. _osuosl: http://osuosl.org
-.. _projects: http://github.com/tehriddler
-.. _book: http://github.com/tehriddler/webframeworks
+.. _projects: http://github.com/bramwelt
+.. _book: http://github.com/bramwelt/webframeworks
 .. _ganeti: http://code.google.com/p/ganeti
 
 
