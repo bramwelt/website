@@ -100,6 +100,9 @@ html_theme_options = {
     'rightsidebar': "true",
 }
 
+# RTD Hack for getting the original style
+html_style = "/default.css"
+
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
 
