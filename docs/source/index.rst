@@ -9,17 +9,19 @@ Trevor Bramwell
 About Me
 --------
 My name is Trevor Bramwell, and I am currently a student at Oregon State
-University. As a Student Developer at the Oregon
-State University Open Source Lab (OSUOSL_), most of my time is spent working
-on `Ganeti Web Manager`_: A Django web frontend for managing Ganeti_ clusters.
+University. I work as a Student Software Developer and Systems Engineer
+at the Oregon State University Open Source Lab (OSUOSL_). Most of my
+time there has been spent working on `Ganeti Web Manager`_: A Django web
+frontend for managing Ganeti_ clusters.
 
-When I have free time, I like hacking on open source projects_, writing my book_, or dancing.
+When I have free time, I like hacking on open source projects_, working
+on my book_, or dancing.
 
-.. _`Ganeti Web Manager`: http://code.osuosl.org/projects/ganeti-webmgr
-.. _osuosl: http://osuosl.org
-.. _projects: http://github.com/bramwelt
-.. _book: http://github.com/bramwelt/webframeworks
-.. _ganeti: http://code.google.com/p/ganeti
+.. _`Ganeti Web Manager`: https://ganeti-webmgr.readthedocs.org/en/latest/
+.. _osuosl: https://osuosl.org
+.. _projects: https://github.com/bramwelt
+.. _book: https://github.com/bramwelt/webframeworks
+.. _ganeti: https://code.google.com/p/ganeti
 
 
 .. toctree::
