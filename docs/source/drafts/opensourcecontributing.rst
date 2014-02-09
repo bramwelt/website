@@ -1,7 +1,8 @@
 Getting Started Contributing
 ============================
+:date: Sun Feb  9 10:39:25 PST 2014
 
-My friend @stemstep recently posed a question on twitter asking::
+My friend `@stemstep`_ recently posed a question on twitter asking::
 
     How do I get involved in open source?
 
@@ -35,7 +36,7 @@ support requests and holding user's hands.
 Any support you provide to a projects users will put you in a good light
 for the users and the leadership.
 
-3. Document the things you learn.
+3. Document **ALL** the things!
 
 The problem you just helped fix *will* come up again. Document it now;
 if able, fix it.
@@ -50,6 +51,18 @@ you jot down notes.
 
 4. Set aside Time
 
+Time scheduled is time saved.
+
+Life is full of distractions. That time you've been looking for, you
+know that time you "don't have" to hack on the projects you want? It
+will be found in that hour you spent on Facebook, Reddit, or HackerNews. 
+
+When you schedule time to work on projects, you will find that time
+magically appearing. It can be as little as 30 minutes, or as much as a
+weekend, just as long as you schedule it.
 
 5. Scratch the Itch
 
+Contributions happen because people want to solve problems.
+
+.. _@stemstep: http://twitter.com/stemstep
