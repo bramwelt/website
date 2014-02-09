@@ -22,7 +22,6 @@ When I have free time, I like hacking on open source projects_, writing my book_
 .. _ganeti: http://code.google.com/p/ganeti
 
 
-.. Contents:
-.. 
-.. .. toctree::
-..    :maxdepth: 2
+.. toctree::
+    :hidden:
+    :maxdepth: 2
