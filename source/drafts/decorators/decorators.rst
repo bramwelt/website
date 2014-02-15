@@ -52,7 +52,8 @@ named because they are used to *decorate* the methods of a class.
 .. _originally: http://www.python.org/dev/peps/pep-0318/
 .. _memoization: http://wiki.python.org/moin/PythonDecoratorLibrary#Memoize
 .. _singletons: http://wiki.python.org/moin/PythonDecoratorLibrary#The_Sublime_Singleton
-.. _`deprecation warnings`: http://wiki.python.org/moin/PythonDecoratorLibrary#Smart_deprecation_warnings_.28with_valid_filenames.2C_line_numbers.2C_etc..29
+.. _deprecation warnings: http://wiki.python.org/moin/PythonDecoratorLibrary#Smart_deprecation_warnings_.28with_valid_filenames.2C_line_numbers.2C_etc..29
+.. _authorization requirements: https://wiki.python.org/moin/PythonDecoratorLibrary#Access_control
 
 I will be showing you how decorators were originally used, how they are
 used with functions without any arguments, functions with arguments,
