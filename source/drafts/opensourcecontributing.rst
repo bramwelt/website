@@ -1,13 +1,16 @@
 Getting Started Contributing
 ============================
-:date: Sun Feb  9 10:39:25 PST 2014
 
-My friend `@stemstep`_ recently posed a question on twitter asking::
+Recently a friend of mine tweeted this question::
 
     How do I get involved in open source?
 
-I thought I'd write down some suggestions gleaned from my experience
-contributing to open source projects.
+This question comes up time and time again from people new to the open
+source ecosystem.
+
+It had now over 3 years since I started contributing to open source
+projects and I thought I'd take the time to share 5 things I've learned
+through my experience.
 
 1. Take Ownership
 -----------------
