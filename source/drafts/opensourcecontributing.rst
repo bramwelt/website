@@ -22,12 +22,11 @@ This can also be thought of as *Fake It Till You Make It* or a
 or "What would you like me to do?". Just tell yourself you're a
 contributor and you'll be one.
 
-.. note: This doesn't mean you don't have to put the work in still.
+.. note: You still have to put the work in.
 
-The truth is most project contributors don't have the time or skill to
-invest in mentoring or delegating tasks. Most of them have full time
-jobs and other priorities. They contribute because they're passionate
-about the software, and use it regularly.
+The truth is most contributors don't have the time to invest in
+mentoring. All of them have jobs and other priorities. They contribute
+because they're passionate about the software, and use it regularly.
 
 2. Provide Support
 ------------------
