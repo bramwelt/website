@@ -9,10 +9,8 @@ Python decorators are really just syntactic sugar for a function wrapper.
     def foo(...):
         ...
         
-In this example, bar is the *decorator* and foo is the function
-bar *decorates*. This example could have been written
-
-::
+Here bar is the *decorator* and foo is the function
+bar *decorates*. This example could have also been written::
 
     def foo(...):
         ...
@@ -20,10 +18,9 @@ bar *decorates*. This example could have been written
     foo = bar(foo)
 
 These decorators allow you - developers - to do things before and/or
-after a function is called.
-
-This is great for implementing `memoization`_, `deprecation
-warnings`_, or `authorization requirements`_.
+after a function is called. That has great implications for easily
+implementing things like `memoization`_, `deprecation warnings`_, or
+`authorization`_.
 
 Decorators are absolutely daugnting at first glance though. Any
 programmer would run away screaming they moment they saw a function
@@ -53,7 +50,7 @@ named because they are used to *decorate* the methods of a class.
 .. _memoization: http://wiki.python.org/moin/PythonDecoratorLibrary#Memoize
 .. _singletons: http://wiki.python.org/moin/PythonDecoratorLibrary#The_Sublime_Singleton
 .. _deprecation warnings: http://wiki.python.org/moin/PythonDecoratorLibrary#Smart_deprecation_warnings_.28with_valid_filenames.2C_line_numbers.2C_etc..29
-.. _authorization requirements: https://wiki.python.org/moin/PythonDecoratorLibrary#Access_control
+.. _authorization: https://wiki.python.org/moin/PythonDecoratorLibrary#Access_control
 
 I will be showing you how decorators were originally used, how they are
 used with functions without any arguments, functions with arguments,
@@ -153,6 +150,58 @@ With Arguments
 
 Functool Wraps
 --------------
+
+Decorators for Classes and Functions
+------------------------------------
+
+::
+
+    from functools import wraps
+
+    # Decorator that works on both functions and methods
+    def func_or_method(f):
+        """
+        This decorator prints "hello world" and works on both functions and
+        methods.
+        """
+        def call(f, self, *args, **kwargs):
+            if self is None:
+                return f(*args, **kwargs)
+            return f(self, *args, **kwargs)
+
+        @wraps(f)
+        def wrapper(*args, **kwargs):
+            print "Args: {0}\nKwargs: {1}".format(str(args), str(kwargs))
+            return call(f, *args, **kwargs)
+        return wrapper
+
+    # Dummy Function
+    @func_or_method
+    def multiply(a, b):
+        """
+        Just a basic function.
+        """
+        return a*b
+
+    # Dummy Class
+    class Foo(object):
+        """
+        Just a basic class.
+        """
+
+        @func_or_method
+        def multiply(self, a, b):
+            """
+            Just a basic method.
+            """
+            return a*b
+            
+    if __name__ == "__main__":
+        output = "Output: {}\nReference: {}\n"
+        print(output.format(multiply(3, 4), multiply))
+
+        f = Foo()
+        print(output.format(f.multiply(3, 4), f.multiply))
 
 
 
