@@ -7,12 +7,20 @@ since I started I have heard this question come up over and over again::
     How do I get involved in open source?
 
 Here are 5 tips I have learned through my experience that will help
-anyone get over that first hurdle of becoming a contributor.
+you get over that first hurdle of becoming a contributor.
 
 1. Scratch the Itch
 -------------------
 
-Contributions happen because people want to solve problems.
+All open source projects start with someone having a problem
+they want solved. Whether that is an unreliable email client, a non-free
+operating system, or a printer that occasionally spews garbage, all
+these problems give someone an 'itch'.
+
+Finding an 'itch' for you, even if it's in a place you can reach (i.e.
+you don't have the experience), will put you on a path to success. Being
+passionate about what your working on, and solving your own problems is
+much more interesting and fun then solving someone elses.
 
 2. Take Ownership
 -----------------
