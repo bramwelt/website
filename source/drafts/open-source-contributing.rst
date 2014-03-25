@@ -1,78 +1,94 @@
-Getting Started Contributing
-============================
+Getting Started In Open Source
+==============================
 
 I have been an open source contributor for over 3 years now, and ever
 since I started I have heard this question come up over and over again::
 
     How do I get involved in open source?
 
-Here are 5 tips I have learned through my experience that will help
-you get over that first hurdle of becoming a contributor.
+Here are 5 things I have learned through my experience that I feel will
+help answer this question.
 
 1. Scratch the Itch
 -------------------
 
-All open source projects start with someone having a problem
-they want solved. Whether that is an unreliable email client, a non-free
-operating system, or a printer that occasionally spews garbage, all
-these problems give someone an 'itch'.
+The next question I usually hear is::
 
-Finding an 'itch' for you, even if it's in a place you can reach (i.e.
-you don't have the experience), will put you on a path to success. Being
-passionate about what your working on, and solving your own problems is
-much more interesting and fun then solving someone elses.
+    How do I choose a project to contribute to?
+
+The answer to this question is simple: Just choose one.
+
+Choose a project, any project, any project at all.
+As long as it's something you find fun and interesting,
+you won't fail in making a successful contribution.
 
 2. Take Ownership
 -----------------
 
-Tell yourself you're a contributor to the project of your choice.
+Once you've found a project, tell yourself you're a contributor. Heck,
+tell your parents, your significant other, your dog.  That's it, you're
+a contributor now! This is the *Fake It Till You Make It* or
+*Self-Fullfilling Prophecy* method.
 
-This can also be thought of as *Fake It Till You Make It* or a
-*Self-Fullfilling Prophecy*. Don't worry about asking "How can I help?"
-or "What would you like me to do?". Just tell yourself you're a
-contributor and you'll be one.
+For the first few days or weeks you commit to working on the project,
+most of your time will be spent reading, not coding, not writing
+documentation, not building cool things, not really *contributing*.
 
-.. note: You still have to put the work in.
+Telling yourself you are a contributor right away will help you get
+over this initial hurdle of feeling unhelpful. Since you've already made
+it, there is nothing left to prove.
 
-The truth is most contributors don't have the time to invest in
-mentoring. All of them have jobs and other priorities. They contribute
-because they're passionate about the software, and use it regularly.
-
-3. Set aside Time
+3. Set Aside Time
 -----------------
 
-Time scheduled is time saved.
-
-Life is full of distractions. That time you've been looking for, you
-know that time you "don't have" to hack on the projects you want? It
-will be found in that hour you spent on Facebook, Reddit, or HackerNews. 
+Time scheduled is time saved, and life is full of distractions. That
+time you've been looking for, you know that time you "don't have" to
+contribute to the project you want? You create that time by scheduling
+it in your calendar.
 
 When you schedule time to work on projects, you will find that time
 magically appearing. It can be as little as 30 minutes, or as much as a
-weekend, just as long as you schedule it.
+weekend, just as long as you schedule it. The time you think you "don't
+have" exists in the many random minutes you spend browsing the web,
+shopping for those shoes you don't need, reading hacker news, or
+watching other people's lives go by on Facebook.
 
 4. Provide Support
 ------------------
 
 The most useful contributor is the one who builds community.
 
-Most open source project are run by a small team of volunteers who have
-a limited supply of time. Few find time to invest in walking through
-support requests and holding user's hands.
+Most open source project are run by a small team of volunteers who, like
+you, have a very limited supply of time. The time they have they spend
+programming, or building the project, because it is the best investment
+they can make. Anything other than the code gets neglected because of
+this.
 
-Any support you provide to a projects users will put you in a good light
-for the users and the leadership.
+When you spend time providing support through IRC, email, or the bug
+tracker, you learn more about the project yourself. Providing support
+is alway appreciated, and will make you visible to the community and
+leadership.
 
 5. Document **ALL** the things!
 -------------------------------
 
-The problem you just helped fix *will* come up again. Document it now;
-if able, fix it.
+Through providing support you are helping people find solutions to their
+problems. You might realize after a while you're solving the same
+problems over and over again.
 
-The documentation is always lacking. Even if a project advertises 100%
-API documentation coverage, their user documentation is still surly
-lacking.
+Writing these solutions down will help save time for you and others.
+These can either be added to the project FAQ, or user documentation.
+That way in the future you can kindly point other to the solution, and
+spend your time answering other questions and documenting more
+solutions.
 
-The best approach I've found to this is to create a *NOTES* file in the
-root of the project, or have a scratchpad next to your keyboard where
-you jot down notes.
+Conclusion
+----------
+
+Finding a project that is fun and interesting to work on is the first
+step in a long journey to becoming an open source contributor. Taking
+ownership and setting aside time to contribute will help get you over
+the initial hurdle of reading. Providing support and documenting
+solutions will help others getting started with the project.
+
+Best of luck on your contributions!
