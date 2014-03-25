@@ -28,7 +28,7 @@ you won't fail in making a successful contribution.
 Once you've found a project, tell yourself you're a contributor. Heck,
 tell your parents, your significant other, your dog.  That's it, you're
 a contributor now! This is the *Fake It Till You Make It* or
-*Self-Fullfilling Prophecy* method.
+*Self-Fulfilling Prophecy* method.
 
 For the first few days or weeks you commit to working on the project,
 most of your time will be spent reading, not coding, not writing
