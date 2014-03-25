@@ -10,4 +10,3 @@ Drafts
     :titlesonly:
 
     *
-    decorators/*
