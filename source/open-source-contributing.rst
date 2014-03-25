@@ -1,5 +1,9 @@
+.. _open-source-contributing:
+
 Getting Started In Open Source
 ==============================
+:date: Mar 24, 2014
+:author: Trevor Bramwell
 
 I have been an open source contributor for over 3 years now, and ever
 since I started I have heard this question come up over and over again::

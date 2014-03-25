@@ -27,3 +27,5 @@ on my book_, or dancing.
 .. toctree::
     :hidden:
     :maxdepth: 2
+
+    open-source-contributing
