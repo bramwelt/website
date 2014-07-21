@@ -1,76 +1,73 @@
 Decorators
 ==========
 
-Python decorators are really just syntactic sugar for a function wrapper.
+Decorators in Python `originally`_ started as a way to easily convert
+methods on Python objects to static and class methods. They are aptly
+named because they are used to *decorate* methods of a class.
 
-::
+.. _originally: http://www.python.org/dev/peps/pep-0318/
 
-    @bar
-    def foo(...):
-        ...
-        
-Here bar is the *decorator* and foo is the function
-bar *decorates*. This example could have also been written::
+Decorators are really a simple concept wrapped in some syntactic sugar
+which can greatly reduce a lot of redundant code (keep things `DRY`_),
+and enable some design patterns like `memoization`_, `deprecation
+warnings`_, or `authorization`_ to be applied easily to any method.
+
+.. _DRY: http://en.wikipedia.org/wiki/Don%27t_repeat_yourself
+
+At first glance, decorators were absolutely daughting to me. I was
+introduced to a `Twisted`_ code base with some decorators that contained
+more than 3 nested functions, along with `Deferreds`_.
+
+.. _memoization: http://wiki.python.org/moin/PythonDecoratorLibrary#Memoize
+.. _deprecation warnings: http://wiki.python.org/moin/PythonDecoratorLibrary#Smart_deprecation_warnings_.28with_valid_filenames.2C_line_numbers.2C_etc..29
+.. _authorization: https://wiki.python.org/moin/PythonDecoratorLibrary#Access_control
+.. _Twisted: http://twistedmatrix.com
+.. _Deferreds: http://twisted.readthedocs.org/en/latest/core/howto/defer.html
+
+
+Overview
+--------
+
+I will be showing you how decorators were originally used. This will be
+followed by an examination of decorators on functions with arguments,
+without arguments, on methods with arguments, and without arguments.
+Finally that we will look at class based decorators and finish with a
+somewhat meta examination of decorators for decorators.
+
+Without Syntax
+--------------
+
+This first example shows how decorators were originally used::
 
     def foo(...):
         ...
 
     foo = bar(foo)
 
-These decorators allow you - developers - to do things before and/or
-after a function is called. That has great implications for easily
-implementing things like `memoization`_, `deprecation warnings`_, or
-`authorization`_.
+In this example a function `foo` is defined, and the subsequently
+reassigned as the function `bar` which takes `foo` as it's argument.
+`bar` here is actually the decorator, and will later call `foo` thus
+allowing `bar` to do work during, or after `foo` executes.
 
-Decorators are absolutely daugnting at first glance though. Any
-programmer would run away screaming they moment they saw a function
-nested 3 times.[1] It took a week of staring at the code, and reading
-everything I could find on decorators before they finally clicked.
+Syntax
+------
 
-- - -
+In Python a decorator is applied by prefixing a function with '@' (such
+as `@bar`), and writing that just before another function definition.
 
-Though decorators are an advanced Python construct, they are really a simple
-concept wrapped in some syntactic sugar.
+For example::
 
-In Python a decorator is used by adding a function call, prefixed with
-'@' just before a function or method definition.
-
-Decorators in Python `originally`_ started as a way to easily apply
-`staticmethod` and `classmethod`  to Python objects, and they are aptly
-named because they are used to *decorate* the methods of a class.
-
-.. A `staticmethod` is a method accessable from a class without requiring
-   an instance of that class. 
-
-.. A `classmethod` is a method that is the same across all classes, similar
-   to 'static' in Java
-
-
-.. _originally: http://www.python.org/dev/peps/pep-0318/
-.. _memoization: http://wiki.python.org/moin/PythonDecoratorLibrary#Memoize
-.. _singletons: http://wiki.python.org/moin/PythonDecoratorLibrary#The_Sublime_Singleton
-.. _deprecation warnings: http://wiki.python.org/moin/PythonDecoratorLibrary#Smart_deprecation_warnings_.28with_valid_filenames.2C_line_numbers.2C_etc..29
-.. _authorization: https://wiki.python.org/moin/PythonDecoratorLibrary#Access_control
-
-I will be showing you how decorators were originally used, how they are
-used with functions without any arguments, functions with arguments,
-and class methods. After that we will look at class based decorators and
-finish on a meta note with a decorator for your decorators.
-
-Without Syntax
---------------
-
-At first glace decorators may seem like a bit of magic, but they are
-really just syntactic sugar.
-
-This is how decorators were originally used, and is shown first as it
-may help understand how the functions are arranged later on when the
-actual syntax is used.
+    @bar
+    def foo(...):
+        ...
+        
+Here bar is *decorating* foo. 
 
 Without Arguments
 ~~~~~~~~~~~~~~~~~
 
-::
+A trivial example is a decorator that prints: `spam, spam spam!` after
+each time a function is called::
 
     def spam(f):
         """
@@ -81,66 +78,66 @@ Without Arguments
             print "spam, spam, spam!"
         return print_spam
 
+    @spam
     def my_func():
         print "I like..."
 
-    my_func = print_spam(my_func)
+It is important to note here that decorators return functions. Let me
+say that again, in bigger letters.
 
+.. attention:: DECORATORS RETURN FUNCTIONS
 
-What is really happening is that the function `my_func` is being rebound
-to the return value of `spam`. As you can see from the example, `spam`
-is passed `my_func` as an argument and constructs a new function
-`print_spam` that calls the first function before printing 'spam' three times.
+So `my_func` gets called, which has actually been redefined to `my_func
+= span(my_func)`. So its actually `spam` which gets called, with
+`my_func` as it's only argument (here redefined to `f` within `my_func`).
+
+So `spam` starts executing ... which returns a function it has defined
+called `print_spam`. (Are you starting to see why this is confusing?
+Stop it! They're smarter than that!).
+
+So `print_spam` gets executed, which, because it was defined within the
+scope of `spam`, has a reference to `f`, which is really `my_func`.
+
+So `my_func` _finally_ gets called, `spam, spam, spam!` is printed, and
+the function exits.
+
+Phew!
+
 
 With Arguments
 ~~~~~~~~~~~~~~
 
+Now, lets try this again. What we'd really like is the ability to print
+*any* string after the function executes. So instead of having `spam,
+spam, spam!` as part of the decorator, we'll pass it in as an argument!
 
+::
 
-Python Syntax
--------------
+    def spam(f, a_silly_string):
+        """
+        Spam before function.
+        """
+        def print_spam():
+            f()
+            print a_silly_string
+        return print_spam
 
-Without Arguments
-~~~~~~~~~~~~~~~~~
+    @spam("spam, spam, spam!")
+    def my_func():
+        print "I like..."
 
->>> def my_dec(f):
-...     def print_hello():
-...         print 'Hello, ',
-...         f()
-...     return print_hello
-... 
->>> @my_dec
-... def print_world():
-...     print 'world!'
-... 
->>> print_world
-<function print_hello at 0x7f3cf55456e0>
->>> print_world()
-Hello, world!
->>>
+The only difference here from the previous example, is that `spam` now
+takes an argument: `a_silly_string`. This argument is printed within
+`print_spam` and passed as the only argument to the `@spam` decorator.
 
-.. Note: Decorators that do not take arguments are written without
-         parentheticals. '@my_dec()' will raise a 'TypeError'
-
-With Arguments
-~~~~~~~~~~~~~~
-
->>> def append_str(msg):
-...     def wrap(f):
-...         def special_msg():
-...             return "{}{}".format(msg, f())
-...         return special_msg
-...     return wrap
-...
->>> @append_str("Some call me...")
-... def my_name():
-...     return 'Tim'
-...
->>> print my_name()
-
+See! You're starting to get the hang of this!
 
 Class Based Decorators
 ----------------------
+
+Now for something complete different!
+
+(... well, not really, but who *doesn't* like Monty Python?)
 
 Without Arguments
 ~~~~~~~~~~~~~~~~~
@@ -206,9 +203,3 @@ Decorators for Classes and Functions
 
 
 .. _12-steps: http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/ 
-
-
-
-[1] The first time I came across them I was doing Twisted
-development, and they also included Deferreds. Which, if you know
-anything about Twisted, is an entirely seperate beast.
