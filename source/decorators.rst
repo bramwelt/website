@@ -142,8 +142,55 @@ Now for something complete different!
 Without Arguments
 ~~~~~~~~~~~~~~~~~
 
+::
+
+    def spam(f):
+        """
+        Print spam
+        """
+
+        def print_spam(self):
+             f(self)
+             print "spam, spam, spam!"
+
+        return print_spam
+
+    class Foo(object):
+        """
+        Foo prints a message
+        """
+
+        @spam
+        def bar(self):
+            print "I like..."
+
+
 With Arguments
 ~~~~~~~~~~~~~~
+
+::
+
+    def spam(f):
+        """
+        Print spam
+        """
+
+        def print_spam(self, a_silly_string):
+             f(self)
+             print a_silly_string
+
+        return print_spam
+
+    class Foo(object):
+        """
+        Foo prints what it likes
+        """
+
+        @spam("eggs, eggs, and spam")
+        def bar(self):
+            print "I like..."
+
+
 
 Functool Wraps
 --------------
