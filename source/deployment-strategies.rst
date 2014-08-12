@@ -48,7 +48,9 @@ My ideal world looks something like this in a Chef resource
     end
 
 
-In the real world though the package part ends up looking something like `this <https://github.com/osuosl-cookbooks/racktables/blob/v0.3.2/recipes/source.rb>`_
+In the real world though the package part ends up looking something like this__
+
+__ https://github.com/osuosl-cookbooks/racktables/blob/v0.3.2/recipes/source.rb
 
 Maybe, just maybe, there's a way we can get there.
 
