@@ -99,6 +99,17 @@ Pros:
 * Only language code. This is never really the case: configs, assets,
   bins, etc.
 
+Breaks Down:
+
+Non-libraries. Anything that requires files other than pure language
+code are not going to work. This doesn't mean test fixtures or other
+internal assets, but things like config files, visual assets, different
+language binaries, etc.
+
+These can be included with the package, but normally other code will
+need to be written to move them somewhere useful like '/usr/share', or
+'/etc'.
+
 
 tarball
 -------
