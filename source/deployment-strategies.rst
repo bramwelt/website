@@ -4,13 +4,20 @@ You Should Be Using Native Packages
 As a system administrator and developer, it's my job to write code,
 deploy that code, and make sure that code stays running on servers.
 
-Now these two parts of me, and my job, are always at odds. Part of me
-says 'Just ship it!'
-[http://media.tumblr.com/42cf1d61acd40b5e167db42bfb8f0608/tumblr_inline_mtuqusUr351raprkq.gif], while the other screams
-"It's not perfect yet!". **[perfect code dev image]**  Then there is
-that third morhped version of me that says, "That deployment is so
-horrible to maintain!".
-[http://media.tumblr.com/8c2ec92b066a75f874bb523a193afbc9/tumblr_inline_n2x13cFMjZ1raprkq.gif]
+Now these two parts of me, and my job, are always at odds.
+
+Part of me says 'Just ship it!'
+
+.. img:: deployment/shipit.gif
+    
+while the other screams "It's not perfect yet!"
+
+.. img:: deployment/perfect.gif
+
+Then there is that third morhped version of me that says, "That
+deployment is so horrible to maintain!"
+
+.. img:: deployment/unmaintain.gif
 
 Ideal World
 -----------
