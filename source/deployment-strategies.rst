@@ -8,16 +8,16 @@ Now these two parts of me, and my job, are always at odds.
 
 Part of me says 'Just ship it!'
 
-.. img:: deployment/shipit.gif
+.. image:: deployment/shipit.gif
     
 while the other screams "It's not perfect yet!"
 
-.. img:: deployment/perfect.gif
+.. image:: deployment/perfect.gif
 
 Then there is that third morhped version of me that says, "That
 deployment is so horrible to maintain!"
 
-.. img:: deployment/unmaintain.gif
+.. image:: deployment/unmaintain.gif
 
 Ideal World
 -----------
