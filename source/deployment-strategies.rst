@@ -110,6 +110,13 @@ These can be included with the package, but normally other code will
 need to be written to move them somewhere useful like '/usr/share', or
 '/etc'.
 
+Some language package manager allow you to do silly things, like upload
+the same version of a package. This means when your server tries to
+install the package, it sees it already has the right version and
+doesn't update it (like it should). It also means you can get different
+results from package managers on different systems. Some download
+tarballs, some wheels.
+
 
 tarball
 -------
@@ -125,6 +132,12 @@ Cons:
 * Scripting/tooling gets pushed to internal code of project, or external
   system like Capestrano, Fabric, etc.
 
+Breaks Down:
+
+Deployments still involve a lot of scripting around extracting, moving,
+and copying/updating files. Scripting generally gets pushed into
+configuration management or other scripts, not packages with the project
+itself.
 
 native package
 --------------
@@ -133,3 +146,13 @@ Cons:
 
 * Multiple versions of same package (Drupal)
 
+Breaks Down:
+
+Requires native package server, which adds management overhead. If
+signing binaries, need signing keys and infrastructure setup around
+verification and key distribution (PKI). If pushing packages to OS
+level, need designated maintainer, package needs to follow OS
+guidelines, licensing issues, etc. 
+
+Multiple versions of the same package can't be installed, without OS
+level hacks like chroot, or rebuilding/renaming packages (or Arch).
