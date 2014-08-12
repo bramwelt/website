@@ -5,10 +5,12 @@ As a system administrator and developer, it's my job to write code,
 deploy that code, and make sure that code stays running on servers.
 
 Now these two parts of me, and my job, are always at odds. Part of me
-says 'Just ship it!' **[worked in prod image]**, while the other screams
+says 'Just ship it!'
+[http://media.tumblr.com/42cf1d61acd40b5e167db42bfb8f0608/tumblr_inline_mtuqusUr351raprkq.gif], while the other screams
 "It's not perfect yet!". **[perfect code dev image]**  Then there is
 that third morhped version of me that says, "That deployment is so
-horrible to maintain!". **[devops image]**
+horrible to maintain!".
+[http://media.tumblr.com/8c2ec92b066a75f874bb523a193afbc9/tumblr_inline_n2x13cFMjZ1raprkq.gif]
 
 Ideal World
 -----------
@@ -39,12 +41,38 @@ My ideal world looks something like this in a Chef resource
     end
 
 
-In the real world though the package part ends up looking something like `this <https://github.com/osuosl-cookbooks/racktables/blob/v0.3.3/recipes/source.rb>`_
+In the real world though the package part ends up looking something like `this <https://github.com/osuosl-cookbooks/racktables/blob/v0.3.2/recipes/source.rb>`_
 
-Maybe, just maybe, there's a way we can get there.  Enter Native
-Packages! But first, wait, what's wrong with all the others?
+Maybe, just maybe, there's a way we can get there.
+
+Deployment Maturity
+-------------------
+Enter Native Packages!
+
+But first, wait, what's wrong with all the others? I *like* how easy my
+git deploys are you, you boat rocker!
+
+`Ixiaus <https://news.ycombinator.com/item?id=5930109>`_ provided a
+great, sadly minority, response to the HN article on `Let's deploy via Git
+<https://coderwall.com/p/xczkaq?&p=1&q=>`_
 
 
+
+
+Vision for Socorro
+------------------
+
+Currently I'm working on Socorro. It is deployed by pulling down the
+deploy.sh script and running it locally on a server. This in turn
+creates a local backup, downloads the latests tarball release, ensures
+the server is in the correct state (directories, users, permissions,
+etc.), and starts the new version.
+
+
+
+
+Notes
+=====
 
 Native packages give you all the benefits of git based deploys, coupled
 with the shippability of tarballs, the dependency injection of
@@ -54,30 +82,8 @@ language specific packages, and security.
 They allow you to easily install software, copy over configs, and
 rollback to previous versions.
 
-A while back I wrote a Chef cookbook for deploying RackTables. I learned
-through that process that some web application are just not engineered
-to be deployable. During the refactor of that cookbook, I ripped out
-everything revolving around extracting the tarball, and turned it into a
-simple recipe for managing the RackTables configuration file.
-
-The point is, my configuration for RackTables should have just been::
-
-package 'RackTables' do
-  version "0.20.4"
-  action :install
-end
-
-If only our application deployments could be that simple!
-
-Oh wait...they can, using native packages.
 
 
-
-
-
-Where I discuss the multiple ways available for deploying web
-application, running said code, managing configuration, and their
-individual benefits and drawbacks.
 
 Problems:
 
