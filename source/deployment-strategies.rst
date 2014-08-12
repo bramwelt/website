@@ -1,11 +1,49 @@
 You Should Be Using Native Packages
 ===================================
 
+As a system administrator and developer, it's my job to write code,
+deploy that code, and make sure that code stays running on servers.
 
-Seriously, you should.
+Now these two parts of me, and my job, are always at odds. Part of me
+says 'Just ship it!' **[worked in prod image]**, while the other screams
+"It's not perfect yet!". **[perfect code dev image]**  Then there is
+that third morhped version of me that says, "That deployment is so
+horrible to maintain!". **[devops image]**
+
+Ideal World
+-----------
+
+My ideal world looks something like this in a Chef resource
+
+.. code-block:: ruby
+
+    package "Application" do
+        version node['application']['version']
+        action :install 
+    end
+
+    template "/etc/application/config.ini" do
+        source "application.ini" 
+        action :create
+    end
+
+    cookbook_file "/etc/init/application.conf" do
+        source "application.conf"
+        action :create
+        notifies :restart, "service[application]", :delayed
+    end
+
+    service "application" do
+        supports :restart => true
+        action [:enable, :start]
+    end
 
 
-Here's why.
+In the real world though the package part ends up looking something like `this <https://github.com/osuosl-cookbooks/racktables/blob/v0.3.3/recipes/source.rb>`_
+
+Maybe, just maybe, there's a way we can get there.  Enter Native
+Packages! But first, wait, what's wrong with all the others?
+
 
 
 Native packages give you all the benefits of git based deploys, coupled
