@@ -4,25 +4,62 @@ You Should Be Using Native Packages
 As a system administrator and developer, it's my job to write code,
 deploy that code, and make sure that code stays running on servers.
 
-Now these two parts of me, and my job, are always at odds.
+Now these two parts of me, are always at odds.
 
-Part of me says 'Just ship it!'
+Part of me says "Just ship it!"
 
 .. image:: _static/deployment/shipit.gif
     
-while the other screams "It's not perfect yet!"
+While the other screams "It's not perfect yet!"
 
 .. image:: _static/deployment/perfect.gif
 
-Then there is that third morhped version of me that says, "That
+Then there is that third morphed version of me that says, "That
 deployment is so horrible to maintain!"
 
 .. image:: _static/deployment/unmaintain.gif
 
+Having been a sysadmin for several years, I have learned that deploying
+with git is just utterly unmaintainable.
+
+
+Git
+---
+
+Now, also being a developer, I understand where this mindset comes from.
+The simplest way to get my application on a server is by using the tools
+I'm already familiar with. 
+
+`FTP is so 90's Let's deploy via Git instead!
+<https://coderwall.com/p/xczkaq?&p=1&q=>`_ was posted to HN a
+while back. 
+
+My response: If "FTP is so 90's", then "Git is so 2000's".
+
+With git there are too many edge cases and problems that arise after the
+first deployment. 
+
+::
+
+    New release? Okay ``git checkout --force``. Huh, files that were ``git
+    rm``'ed are still around? Alright ``git clean -xdf``. Wait that just
+    wiped out our local config, crap! Okay, let's just run the deploy
+    script again.  Wait, that's not the right version. What do you mean
+    we *just* released a new version?! GAAHH!!!
+
+Deploying with git also breaks the `12factor`_ pattern for scalable
+applications by merging the build and deploy steps.
+
+But I *like* how easy my git deploys are! You, you boat rocker!  If you
+still feel git and ssh is *the way* to deploy your application, that's
+fine, I won't stop you. At least use something like `git-deploy`_, or
+wrap things in `fabric`_.
+
+
 Ideal World
 -----------
 
-My ideal world looks something like this in a Chef resource
+My ideal world looks something like this as a Chef resource
 
 .. code-block:: ruby
 
@@ -42,28 +79,33 @@ My ideal world looks something like this in a Chef resource
         notifies :restart, "service[application]", :delayed
     end
 
-    service "application" do
+    service "application-cli" do
         supports :restart => true
         action [:enable, :start]
     end
 
+For those not intimately familiar with Chef, this says: Install
+application, upload the application configuration to
+``/etc/application``, upload the webserver configuration to
+``/etc/init/application.conf``, and start the application server using
+``application-cli``.
 
-In the real world though the package part ends up looking something like this__
+In the real world though, install the package part ends up looking something like this__
 
 __ https://github.com/osuosl-cookbooks/racktables/blob/v0.3.2/recipes/source.rb
 
+A horrible mess of unpacking a tarball, ensuring the checksum is
+correct, and extracting files to the right place.
+
 Maybe, just maybe, there's a way we can get there.
 
-Deployment Maturity
--------------------
-Enter Native Packages!
 
-But first, wait, what's wrong with all the others? I *like* how easy my
-git deploys are you, you boat rocker!
-
+Deployment Evolution
+--------------------
 `Ixiaus <https://news.ycombinator.com/item?id=5930109>`_ provided a
-great, sadly minority, response to the HN article on `Let's deploy via Git
-<https://coderwall.com/p/xczkaq?&p=1&q=>`_
+great, sadly minority, response to the HN article
+
+https://hynek.me/articles/python-app-deployment-with-native-packages/
 
 
 
@@ -112,9 +154,6 @@ scm + ssh
 Cons:
 
 * Scalability (Parallel SSH?)
-* Building on the server - Only have repo, so any added dependencies
-  (packages, binaries, etc) need to be added seperately - 12factor
-  lables this build & deploy in one
 
 Pros:
 
@@ -123,11 +162,6 @@ Pros:
 
 Breaks Down:
 
-New release? Okay 'git checkout --force'. Huh, that thing that we git
-rm'ed is still around? Alright 'git clean -xdf'. Wait that just wiped
-out our local config, crap gotta run the deploy script again. Deploy.
-Wait, that's not the right version. What do you mean we _just_ released
-a new one?! GAAHH
 
 .. note:: The fact that your configuration is in the same directory as
     your code is a problem, but one I will discuss later.
@@ -135,9 +169,6 @@ a new one?! GAAHH
 A lot of time gets spent engineering work arounds for these problems, or
 making sure a clean deployment happens. 
 
-If you still feel git and ssh is *the way* to deploy your application, I
-won't stop you. But please, look at things like `git-deploy`_ to manage
-it.
 
 
 language package
