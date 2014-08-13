@@ -30,13 +30,6 @@ Now, also being a developer, I understand where this mindset comes from.
 The simplest way to get my application on a server is by using the tools
 I'm already familiar with. 
 
-`FTP is so 90's Let's deploy via Git instead!`__ was posted to HN a
-while back. 
-
-__ https://coderwall.com/p/xczkaq?&p=1&q=
-
-My response: If "FTP is so 90's", then "Git is so 2000's".
-
 With git there are too many edge cases and problems that arise after the
 first deployment. 
 
@@ -86,6 +79,28 @@ shouldn't do them.
 .. _ways: https://github.com/pypa/virtualenv/blob/1.11/virtualenv.py#L1987
 
 
+tarball
+-------
+
+Pros:
+
+* Checksums
+* More than just language code
+
+Cons:
+
+* Unsigned
+* Scripting/tooling gets pushed to internal code of project, or external
+  system like Capestrano, Fabric, etc.
+
+Breaks Down:
+
+Deployments still involve a lot of scripting around extracting, moving,
+and copying/updating files. Scripting generally gets pushed into
+configuration management or other scripts, not packages with the project
+itself.
+
+
 Ideal World
 -----------
 
@@ -130,100 +145,6 @@ files to the right place.
 Maybe, just maybe, there's a way we can get there.
 
 
-Deployment Evolution
---------------------
-`Ixiaus <https://news.ycombinator.com/item?id=5930109>`_ provided a
-great, sadly minority, response to the HN article
-
-https://hynek.me/articles/python-app-deployment-with-native-packages/
-
-
-
-
-Vision for Socorro
-------------------
-
-Currently I'm working on Socorro. It is deployed by pulling down the
-deploy.sh script and running it locally on a server. This in turn
-creates a local backup, downloads the latests tarball release, ensures
-the server is in the correct state (directories, users, permissions,
-etc.), and starts the new version.
-
-
-
-
-Notes
-=====
-
-Native packages give you all the benefits of git based deploys, coupled
-with the shippability of tarballs, the dependency injection of
-language specific packages, and security.
-
-
-They allow you to easily install software, copy over configs, and
-rollback to previous versions.
-
-
-
-
-Problems:
-
-* MITM - Someone can install their own version of your software
-       - This can happen in multiple places: DNS, Compromised SCM
-         server, Language specific package server, Native package server
-* Arbitrary Code Execution - Using CI or CD to deploy PRs to staging/dev
-  allows people to take over server if you blindly accept all patches
-* Secure credentials commited to repo.
-* Prod/Stage disparity - First tests of a deploy is on Production
-
-Interpreted Vs. Compiled langagues ==> meaning output is a single binary
-
-scm + ssh
----------
-
-Cons:
-
-* Scalability (Parallel SSH?)
-
-Pros:
-
-* Revisions (SHAs)
-* Over encrypted channel (ssh)
-
-Breaks Down:
-
-
-.. note:: The fact that your configuration is in the same directory as
-    your code is a problem, but one I will discuss later.
-
-A lot of time gets spent engineering work arounds for these problems, or
-making sure a clean deployment happens. 
-
-
-
-
-
-tarball
--------
-
-Pros:
-
-* Checksums
-* More than just language code
-
-Cons:
-
-* Unsigned
-* Scripting/tooling gets pushed to internal code of project, or external
-  system like Capestrano, Fabric, etc.
-
-Breaks Down:
-
-Deployments still involve a lot of scripting around extracting, moving,
-and copying/updating files. Scripting generally gets pushed into
-configuration management or other scripts, not packages with the project
-itself.
-
 native package
 --------------
 
@@ -241,3 +162,30 @@ guidelines, licensing issues, etc.
 
 Multiple versions of the same package can't be installed, without OS
 level hacks like chroot, or rebuilding/renaming packages (or Arch).
+
+
+Vision for Socorro
+------------------
+
+Currently I'm working on Socorro. It is deployed by pulling down the
+deploy.sh script and running it locally on a server. This in turn
+creates a local backup, downloads the latests tarball release, ensures
+the server is in the correct state (directories, users, permissions,
+etc.), and starts the new version.
+
+
+Notes
+=====
+
+Native packages give you all the benefits of git based deploys, coupled
+with the shippability of tarballs, the dependency injection of
+language specific packages, and security.
+
+They allow you to easily install software, copy over configs, and
+rollback to previous versions.
+
+
+`Ixiaus <https://news.ycombinator.com/item?id=5930109>`_ provided a
+great, sadly minority, response to the HN article
+
+https://hynek.me/articles/python-app-deployment-with-native-packages/
