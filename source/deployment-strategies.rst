@@ -39,8 +39,6 @@ My response: If "FTP is so 90's", then "Git is so 2000's".
 With git there are too many edge cases and problems that arise after the
 first deployment. 
 
-::
-
     New release? Okay ``git checkout --force``. Huh, files that were ``git
     rm``'ed are still around? Alright ``git clean -xdf``. Wait that just
     wiped out our local config, crap! Okay, let's just run the deploy
@@ -50,16 +48,41 @@ first deployment.
 Deploying with git also breaks the `12factor`_ pattern for scalable
 applications by merging the build and deploy steps.
 
-But I *like* how easy my git deploys are! You, you boat rocker!  If you
-still feel git and ssh is *the way* to deploy your application, that's
-fine, I won't stop you. At least use something like `git-deploy`_, or
-wrap things in `fabric`_.
+    "But I *like* how easy my git deploys are! You, you boat rocker!"
 
+If you still feel git and ssh is *the way* to deploy your application,
+that's fine, I won't stop you. At least use something like
+`git-deploy`_, or wrap things in `fabric`_.
+
+
+Language Package
+----------------
+
+One step up from git+ssh is language specific packaging.
+
+This working for the majority of applications. If, that is, you define
+'application' to mean 'library'. 
+
+Using a language specific package manager works for probably 90% of
+applications. They provide a single, obvious path to installation, and
+with versioning, allow for easy rollbacks.
+
+The problem with language specific packging is that as soon as any
+resources are included with the application that aren't written in that
+language, things start to break down.
+
+Things like configuration files, assets such as css, html, javascript,
+and any external binary (eg. java) that is required for your application
+to run.
+
+There are `ways
+<https://github.com/pypa/virtualenv/blob/1.11/virtualenv.py#L1987>`_
+around this, but they're bad and you generally shouldn't do them.
 
 Ideal World
 -----------
 
-My ideal world looks something like this as a Chef resource
+My ideal world looks something like this:
 
 .. code-block:: ruby
 
@@ -84,7 +107,7 @@ My ideal world looks something like this as a Chef resource
         action [:enable, :start]
     end
 
-For those not intimately familiar with Chef, this says: Install
+For those not intimately familiar with Chef resources, this says: Install
 application, upload the application configuration to
 ``/etc/application``, upload the webserver configuration to
 ``/etc/init/application.conf``, and start the application server using
@@ -92,10 +115,11 @@ application, upload the application configuration to
 
 In the real world though, install the package part ends up looking something like this__
 
-__ https://github.com/osuosl-cookbooks/racktables/blob/v0.3.2/recipes/source.rb
 
 A horrible mess of unpacking a tarball, ensuring the checksum is
 correct, and extracting files to the right place.
+
+__ https://github.com/osuosl-cookbooks/racktables/blob/v0.3.2/recipes/source.rb
 
 Maybe, just maybe, there's a way we can get there.
 
@@ -171,35 +195,6 @@ making sure a clean deployment happens.
 
 
 
-language package
-----------------
-
-Cons:
-
-* Binary files
-
-Pros:
-
-* Only language code. This is never really the case: configs, assets,
-  bins, etc.
-
-Breaks Down:
-
-Non-libraries. Anything that requires files other than pure language
-code are not going to work. This doesn't mean test fixtures or other
-internal assets, but things like config files, visual assets, different
-language binaries, etc.
-
-These can be included with the package, but normally other code will
-need to be written to move them somewhere useful like '/usr/share', or
-'/etc'.
-
-Some language package manager allow you to do silly things, like upload
-the same version of a package. This means when your server tries to
-install the package, it sees it already has the right version and
-doesn't update it (like it should). It also means you can get different
-results from package managers on different systems. Some download
-tarballs, some wheels.
 
 
 tarball
