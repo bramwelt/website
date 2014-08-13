@@ -91,7 +91,7 @@ On the downside, they represent a bootstrapping problem for deployments.
 You need the deployment scripts, and the tarball, but the tarball
 contains the deployment scripts. This leads to deployments being managed
 by external tools such as Capestrano and Fabric, or even the rising
-ideum of ``curl install.sh | bash``
+idiom of ``curl install.sh | bash``
 
 
 Ideal World
