@@ -20,18 +20,21 @@ deployment is so horrible to maintain!"
 .. image:: _static/deployment/unmaintain.gif
 
 Having been a system administrator and web developer for several years,
-I have learned that deploying with git is just utterly unmaintainable.
+I have learned that deploying with git over ssh is just utterly
+unmaintainable.
 
 
-Git
----
+Git+SSH
+-------
 
-Now, also being a developer, I understand where this mindset comes from.
-The simplest way to get my application on a server is by using the tools
-I'm already familiar with. 
+As a developer I understand where the mindset for deploying with git
+comes from. The simplest way for to get an application on a server is
+by using familiar tools.
 
-With git there are too many edge cases and problems that arise after the
-first deployment. 
+Need to deploy the new version? Cool. Just ``ssh``, ``git pull``, run
+migrations, and restart the webserver.
+
+After the first deployment though, git+ssh starts to break down.
 
     New release? Okay ``git checkout --force``. Huh, files that were ``git
     rm``'ed are still around? Alright ``git clean -xdf``. Wait that just
@@ -39,14 +42,20 @@ first deployment.
     script again.  Wait, that's not the right version. What do you mean
     we *just* released a new version?! GAAHH!!!
 
-Deploying with git also breaks the `12factor`_ pattern for scalable
-applications by merging the build and deploy steps.
+The main point is that this method breaks the `12factor`_ pattern for
+scalable applications by merging the build and deploy steps.
+
+Also, a lot of tooling ends up being written around having a clean
+environment each time a new release comes out, along with scripts for
+moving files, running migrations, creating users, and anything else
+related to the deploy process.
 
     "But I *like* how easy my git deploys are! You, you boat rocker!"
 
-If you still feel git and ssh is *the way* to deploy your application,
-that's fine, I won't stop you. At least use something like
-`git-deploy`_, or wrap things in `fabric`_.
+Some still feel git and ssh is *the way* to deploy applications, and
+that's fine, I won't stop them. But they should save themselves some
+time and use an application like `git-deploy`_, or wrap things in
+`fabric`_.
 
 .. _12factor: http://12factor.net/build-release-run
 .. _git-deploy: https://github.com/git-deploy/git-deploy
@@ -56,28 +65,25 @@ that's fine, I won't stop you. At least use something like
 Language Package
 ----------------
 
-One step up from git+ssh is language specific packaging.
+So what's next? If git+ssh isn't the way to go, how should applications
+be deployed? Well, the next logical thing after git based deploys are
+building language specific packages. That means pip, npm, or rpm
+installable packages.
 
-This working for the majority of applications. If, that is, you define
-'application' to mean 'library'. 
+Language specific packages allow developers to install and manage
+versions of their code. They draw the distinction between building and
+deploying applications. And for probably 90% of use-cases they are the
+right way to go.
 
-Using a language specific package manager works for probably 90% of
-applications. They provide a single, obvious path to installation, and
-with versioning, allow for easy rollbacks.
+For the other 10% things get a little tricker. As soon as packages start
+including resources not written in the language, packages start to show
+their threads. When things like configuration files, static assets, and
+binaries, are required for the application to run, language specific
+packages don't cut it anymore.
 
-The problem with language specific packging is that as soon as any
-resources are included with the application that aren't written in that
-language, things start to break down.
-
-Things like configuration files, assets such as css, html, javascript,
-and any external binary (eg. java) that is required for your application
-to run.
-
-There are `ways`_ around this, but they're bad and you generally
-shouldn't do them.
-
-.. _ways: https://github.com/pypa/virtualenv/blob/1.11/virtualenv.py#L1987
-
+If an application has reached this point, having a language specific
+package can definitely still help, yet finding a better packaging
+solution is paramount for maintainable deployments.
 
 Tarballs
 --------
