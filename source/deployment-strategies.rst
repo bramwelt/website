@@ -30,9 +30,10 @@ Now, also being a developer, I understand where this mindset comes from.
 The simplest way to get my application on a server is by using the tools
 I'm already familiar with. 
 
-`FTP is so 90's Let's deploy via Git instead!
-<https://coderwall.com/p/xczkaq?&p=1&q=>`_ was posted to HN a
+`FTP is so 90's Let's deploy via Git instead!`__ was posted to HN a
 while back. 
+
+__ https://coderwall.com/p/xczkaq?&p=1&q=
 
 My response: If "FTP is so 90's", then "Git is so 2000's".
 
@@ -53,6 +54,10 @@ applications by merging the build and deploy steps.
 If you still feel git and ssh is *the way* to deploy your application,
 that's fine, I won't stop you. At least use something like
 `git-deploy`_, or wrap things in `fabric`_.
+
+.. _12factor: http://12factor.net/build-release-run
+.. _git-deploy: https://github.com/git-deploy/git-deploy
+.. _fabric: http://fabric.rtfd.org
 
 
 Language Package
@@ -75,9 +80,11 @@ Things like configuration files, assets such as css, html, javascript,
 and any external binary (eg. java) that is required for your application
 to run.
 
-There are `ways
-<https://github.com/pypa/virtualenv/blob/1.11/virtualenv.py#L1987>`_
-around this, but they're bad and you generally shouldn't do them.
+There are `ways`_ around this, but they're bad and you generally
+shouldn't do them.
+
+.. _ways: https://github.com/pypa/virtualenv/blob/1.11/virtualenv.py#L1987
+
 
 Ideal World
 -----------
@@ -113,13 +120,12 @@ application, upload the application configuration to
 ``/etc/init/application.conf``, and start the application server using
 ``application-cli``.
 
-In the real world though, install the package part ends up looking something like this__
+In the real world though, install the package part ends up looking
+something like my `racktables`_ deplyment config. A horrible mess of
+unpacking a tarball, ensuring the checksum is correct, and extracting
+files to the right place.
 
-
-A horrible mess of unpacking a tarball, ensuring the checksum is
-correct, and extracting files to the right place.
-
-__ https://github.com/osuosl-cookbooks/racktables/blob/v0.3.2/recipes/source.rb
+.. _racktables: https://github.com/osuosl-cookbooks/racktables/blob/v0.3.2/recipes/source.rb
 
 Maybe, just maybe, there's a way we can get there.
 
