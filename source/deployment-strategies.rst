@@ -79,26 +79,19 @@ shouldn't do them.
 .. _ways: https://github.com/pypa/virtualenv/blob/1.11/virtualenv.py#L1987
 
 
-tarball
--------
+Tarballs
+--------
 
-Pros:
+Tarballs have been the default way to distribute software for quite some
+time. Though they don't have any unified structure, they can include all
+the resources a application needs to be deployed. Their integrity can easily be
+verified using checksums.
 
-* Checksums
-* More than just language code
-
-Cons:
-
-* Unsigned
-* Scripting/tooling gets pushed to internal code of project, or external
-  system like Capestrano, Fabric, etc.
-
-Breaks Down:
-
-Deployments still involve a lot of scripting around extracting, moving,
-and copying/updating files. Scripting generally gets pushed into
-configuration management or other scripts, not packages with the project
-itself.
+On the downside, they represent a bootstrapping problem for deployments.
+You need the deployment scripts, and the tarball, but the tarball
+contains the deployment scripts. This leads to deployments being managed
+by external tools such as Capestrano and Fabric, or even the rising
+ideum of ``curl install.sh | bash``
 
 
 Ideal World
