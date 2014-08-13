@@ -1,26 +1,26 @@
 You Should Be Using Native Packages
 ===================================
 
-As a system administrator and developer, it's my job to write code,
+As a system administrator and web developer it's my job to write code,
 deploy that code, and make sure that code stays running on servers.
 
 Now these two parts of me, are always at odds.
 
-Part of me says "Just ship it!"
+The system administrator in me says "Just ship it!"
 
 .. image:: _static/deployment/shipit.gif
     
-While the other screams "It's not perfect yet!"
+While the web developer screams "It's not perfect yet!"
 
 .. image:: _static/deployment/perfect.gif
 
-Then there is that third morphed version of me that says, "That
+Then there is the combination of the two that says, "That
 deployment is so horrible to maintain!"
 
 .. image:: _static/deployment/unmaintain.gif
 
-Having been a sysadmin for several years, I have learned that deploying
-with git is just utterly unmaintainable.
+Having been a system administrator and web developer for several years,
+I have learned that deploying with git is just utterly unmaintainable.
 
 
 Git
