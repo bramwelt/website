@@ -89,7 +89,7 @@ solution is paramount for maintainable deployments.
 Tarballs
 --------
 
-It wasn't until interpreted languages like php, ruby, and python started
+It wasn't until interpreted languages like PHP, Ruby, and Python started
 being used primarily for web development, that people shifted towards
 git+ssh deployments.
 
@@ -140,7 +140,7 @@ application, upload the application configuration to
 ``application-cli``.
 
 In the real world though, install the package part ends up looking
-something like my `racktables`_ deplyment config. A horrible mess of
+something like my `racktables`_ deployment config. A horrible mess of
 unpacking a tarball, ensuring the checksum is correct, and extracting
 files to the right place.
 
