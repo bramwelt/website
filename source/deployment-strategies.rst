@@ -14,7 +14,7 @@ While the web developer screams "It's not perfect yet!"
 
 .. image:: _static/deployment/perfect.gif
 
-Then there is the combination of the two that says, "That
+Then there is the combination of the two saying, "That
 deployment is so horrible to maintain!"
 
 .. image:: _static/deployment/unmaintain.gif
