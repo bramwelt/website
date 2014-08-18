@@ -192,20 +192,3 @@ simple as:
 .. _Breakpad: https://code.google.com/p/google-breakpad/
 .. _Socorro: https://wiki.mozilla.org/Socorro
 .. _fpm: https://github.com/jordansissel/fpm
-
-
-Notes
-=====
-
-Native packages give you all the benefits of git based deploys, coupled
-with the shippability of tarballs, the dependency injection of
-language specific packages, and security.
-
-They allow you to easily install software, copy over configs, and
-rollback to previous versions.
-
-
-`Ixiaus <https://news.ycombinator.com/item?id=5930109>`_ provided a
-great, sadly minority, response to the HN article
-
-https://hynek.me/articles/python-app-deployment-with-native-packages/
