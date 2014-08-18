@@ -169,7 +169,7 @@ Vision for Socorro
 Right now I am interning at Mozilla and working on `Socorro`_: a distributed
 system for collecting, analyzing, and viewing crash reports submitted
 by `Breakpad`_. Part of my work involves making deployments of Socorro
-easier.
+`easier`_.
 
 Socorro is installed by downloading a `deploy.sh` script on a server,
 and pointing it to a tarball of Socorro. The tarball is downloaded,
@@ -186,6 +186,7 @@ simple as:
     $ wget https://example.com/socorro.deb
     $ dpkg -i socorro.deb
 
+.. _easier: https://bugzilla.mozilla.org/show_bug.cgi?id=1055268
 .. _Breakpad: https://code.google.com/p/google-breakpad/
 .. _Socorro: https://wiki.mozilla.org/Socorro
 .. _fpm: https://github.com/jordansissel/fpm
