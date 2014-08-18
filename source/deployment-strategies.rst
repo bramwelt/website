@@ -166,11 +166,29 @@ level hacks like chroot, or rebuilding/renaming packages (or Arch).
 Vision for Socorro
 ------------------
 
-Currently I'm working on Socorro. It is deployed by pulling down the
-deploy.sh script and running it locally on a server. This in turn
-creates a local backup, downloads the latests tarball release, ensures
-the server is in the correct state (directories, users, permissions,
-etc.), and starts the new version.
+Right now I am interning at Mozilla and working on `Socorro`_: a distributed
+system for collecting, analyzing, and viewing crash reports submitted
+by `Breakpad`_. Part of my work involves making deployments of Socorro
+easier.
+
+Socorro is installed by downloading a `deploy.sh` script on a server,
+and pointing it to a tarball of Socorro. The tarball is downloaded,
+extracted, and installed, while the deploy script does some heavy
+lifting: ensuring dependencies are installed, creating users, setting
+permissions, and copying around configuration files.
+
+The deploy script does what most package managers do using *{pre,post}
+install* scripts. My plan is to combine both the tarball and deploy
+script into a single package using `fpm`_ so that deployments can be as
+simple as:
+
+.. code-block:: bash
+    $ wget https://example.com/socorro.deb
+    $ dpkg -i socorro.deb
+
+.. _Breakpad: https://code.google.com/p/google-breakpad/
+.. _Socorro: https://wiki.mozilla.org/Socorro
+.. _fpm: https://github.com/jordansissel/fpm
 
 
 Notes
