@@ -85,8 +85,13 @@ If an application has reached this point, having a language specific
 package can definitely still help, yet finding a better packaging
 solution is paramount for maintainable deployments.
 
+
 Tarballs
 --------
+
+It wasn't until interpreted languages like php, ruby, and python started
+being used primarily for web development, that people shifted towards
+git+ssh deployments.
 
 Tarballs have been the default way to distribute software for quite some
 time. Though they don't have any unified structure, they can include all
