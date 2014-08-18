@@ -144,23 +144,25 @@ files to the right place.
 Maybe, just maybe, there's a way we can get there.
 
 
-native package
+Native Packages
 --------------
 
-Cons:
+Enter native packages!
 
-* Multiple versions of same package (Drupal)
+Native packages make the ideal world I described a reality. They benefit
+both developers and system administrators by allowing the developers to
+succinctly define how their application gets setup and torn down, and
+relieving system administrators the headache of managing fickle
+deployment configuration systems.
 
-Breaks Down:
+There are not extra deployment scripts to manage, and the `12factor`_
+pattern of keeping build and deploys separate is maintained.
 
-Requires native package server, which adds management overhead. If
-signing binaries, need signing keys and infrastructure setup around
-verification and key distribution (PKI). If pushing packages to OS
-level, need designated maintainer, package needs to follow OS
-guidelines, licensing issues, etc. 
-
-Multiple versions of the same package can't be installed, without OS
-level hacks like chroot, or rebuilding/renaming packages (or Arch).
+Hosting an internal package server can also provide the benefit of
+mitigating Man-in-the-Middle attacks. Binaries are signed and uploaded
+to the package server, and downloaded by the application server.
+Signatures are checked by the application server, and invalid signatures
+stop malicious code from being installed.
 
 
 Vision for Socorro
