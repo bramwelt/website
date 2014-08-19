@@ -94,13 +94,13 @@ downgrading applications quite easy.
 When everything is bundled together, it can be a great, but it can also
 be painful.
 
-Usuall after an application is installed a few actions need to happen.
+Usually after an application is installed a few actions need to happen.
 Configuration files moved, static assets uploaded to another
 server, or database migrations run. Few language specific package
 managers support post-install (or even pre-install) scripts from being
 ran. Some developers get around this by using a deployment script that
 handles the entire appliction. This is similar to the rising idiom of
-``curl install.sh | bash``. Others having the deployment tooling handle
+``curl install.sh | bash``. Others have the deployment tooling handle
 the post-install actions.
 
 
