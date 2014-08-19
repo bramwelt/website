@@ -66,8 +66,8 @@ At some point in the application's lifecycle a rollback will have to
 happen, and this will add even more complexity.
 
 Tools like `git-deploy`_, `fabric`_, or `capistrano`_, can make git+ssh
-deployments easier to manage, but there are other ways that make them
-even easier.
+easier to manage, but there are other ways that make deployments even
+easier.
 
 .. _12factor: http://12factor.net/build-release-run
 .. _git-deploy: https://github.com/git-deploy/git-deploy
@@ -78,25 +78,30 @@ even easier.
 Language Package
 ----------------
 
-So what's next? If git+ssh isn't the way to go, how should applications
-be deployed? Well, the next logical thing after git based deploys are
-building language specific packages. That means pip, npm, or rpm
-installable packages.
+When learning a modern language like ruby or npm for the first time,
+developers eventually surpass syntax and semantics and foray into
+debuggers, linters, and package managers.
 
-Language specific packages allow developers to install and manage
-versions of their code. They draw the distinction between building and
-deploying applications. And for probably 90% of use-cases they are the
-right way to go.
+Language specific package managers, such as pip, gem and npm, provide a
+lot of benefit to developers: packaging, installation, version and
+dependency management, and most of all distribution.
 
-For the other 10% things get a little tricker. As soon as packages start
-including resources not written in the language, packages start to show
-their threads. When things like configuration files, static assets, and
-binaries, are required for the application to run, language specific
-packages don't cut it anymore.
+These package managers allow developers to distribute a single binary of
+code, configuration, and assets; providing the distinction between
+build and deploy required by `12factor`_. They also make upgrading and
+downgrading applications quite easy.
 
-If an application has reached this point, having a language specific
-package can definitely still help, yet finding a better packaging
-solution is paramount for maintainable deployments.
+When everything is bundled together, it can be a great, but it can also
+be painful.
+
+Usuall after an application is installed a few actions need to happen.
+Configuration files moved, static assets uploaded to another
+server, or database migrations run. Few language specific package
+managers support post-install (or even pre-install) scripts from being
+ran. Some developers get around this by using a deployment script that
+handles the entire appliction. This is similar to the rising idiom of
+``curl install.sh | bash``. Others having the deployment tooling handle
+the post-install actions.
 
 
 Tarballs
