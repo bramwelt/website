@@ -103,20 +103,23 @@ These issues can be seen in the rising idiom of: ``curl install.sh | bash``.
 Tarballs
 --------
 
-It wasn't until interpreted languages like PHP, Ruby, and Python started
-being used primarily for web development, that people shifted towards
-git+ssh deployments.
+Tarballs have been used to distribute software for a long time.
 
-Tarballs have been the default way to distribute software for quite some
-time. Though they don't have any unified structure, they can include all
-the resources a application needs to be deployed. Their integrity can easily be
-verified using checksums.
+Similar to language specific packaging, they are a single binary
+containing all the assets and code required for a project. 
 
-On the downside, they represent a bootstrapping problem for deployments.
-You need the deployment scripts, and the tarball, but the tarball
-contains the deployment scripts. This leads to deployments being managed
-by external tools such as Capestrano and Fabric, or even the rising
-idiom of ``curl install.sh | bash``
+They provided a few benefits over language packages. Because they are
+created outside the constrains of a specific language package manager,
+they can contain files from multiple projects, and languages, including
+other binaries. Extractions are not restricted to language specific
+installation directories.
+
+Tooling can be applied more granualarly as individual files or
+directories can be extracted.
+
+But they share some of the same problems with language packages. Extra
+tooling is required for deploying applications. They also don't contain a 
+version management system, nor any facility for upgrades or rollbacks.
 
 
 Native Packages
