@@ -43,39 +43,36 @@ To this:
 Git+SSH
 -------
 
-As a developer I understand where the mindset for deploying with git
-comes from. The simplest way for to get an application on a server is
-by using familiar tools.
+When you have a hammer as a developer, its always easy to see every
+problem as a nail. This is where the mindset of using git and ssh for
+deployments come from.
 
-Need to deploy the new version? Cool. Just ``ssh``, ``git pull``, run
-migrations, and restart the webserver.
+git+ssh allow developers to quickly and easily get their code up and
+running on another machine, but it comes at a cost.
 
-After the first deployment though, git+ssh starts to break down.
+Applications require more than just the code to run:
 
-    New release? Okay ``git checkout --force``. Huh, files that were ``git
-    rm``'ed are still around? Alright ``git clean -xdf``. Wait that just
-    wiped out our local config, crap! Okay, let's just run the deploy
-    script again.  Wait, that's not the right version. What do you mean
-    we *just* released a new version?! GAAHH!!!
+ * configuration files
+ * database migrations
+ * static assets
+ * initialization scripts
 
-The main point is that this method breaks the `12factor`_ pattern for
-scalable applications by merging the build and deploy steps.
+And after the first deployment, git+ssh starts to break down, and more
+and more tooling gets added to copy files, run migrations, restart
+servers, and upload assets. This breaks the `12factor`_ pattern of
+seperating the build and deploy processes.
 
-Also, a lot of tooling ends up being written around having a clean
-environment each time a new release comes out, along with scripts for
-moving files, running migrations, creating users, and anything else
-related to the deploy process.
+At some point in the application's lifecycle a rollback will have to
+happen, and this will add even more complexity.
 
-    "But I *like* how easy my git deploys are! You, you boat rocker!"
-
-Some still feel git and ssh is *the way* to deploy applications, and
-that's fine, I won't stop them. But they should save themselves some
-time and use an application like `git-deploy`_, or wrap things in
-`fabric`_.
+Tools like `git-deploy`_, `fabric`_, or `capistrano`_, can make git+ssh
+deployments easier to manage, but there are other ways that make them
+even easier.
 
 .. _12factor: http://12factor.net/build-release-run
 .. _git-deploy: https://github.com/git-deploy/git-deploy
 .. _fabric: http://fabric.rtfd.org
+.. _capistrano: http://capistranorb.com/
 
 
 Language Package
