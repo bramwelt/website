@@ -4,24 +4,40 @@ You Should Be Using Native Packages
 As a system administrator and web developer it's my job to write code,
 deploy that code, and make sure that code stays running on servers.
 
-Now these two parts of me, are always at odds.
+These two parts of me, are always at odds.
 
 The system administrator in me says "Just ship it!"
 
 .. image:: _static/deployment/shipit.gif
     
-While the web developer screams "It's not perfect yet!"
+The web developer screams "It's not perfect yet!"
 
 .. image:: _static/deployment/perfect.gif
 
-Then there is the combination of the two saying, "That
-deployment is so horrible to maintain!"
+While the devop just cries at the lack of idempotency.
 
 .. image:: _static/deployment/unmaintain.gif
 
-Having been a system administrator and web developer for several years,
-I have learned that deploying with git over ssh is just utterly
-unmaintainable.
+Having deployments that are simple, easy, and quick, provides more time
+for development, and administration. But getting an application to that
+point can require a lot of time.
+
+In my experience, an application follows this progression for
+deployments:
+
+ 1. Git+SSH
+ 2. Language Package
+ 3. Tarballs
+ 4. Native Packages
+
+Hopefully by the end of this document you will understand how to get
+your deployment from this:
+
+.. image:: _static/deployment/bad_package.gif
+
+To this:
+
+.. image:: _static/deployment/good_package.gif
 
 
 Git+SSH
