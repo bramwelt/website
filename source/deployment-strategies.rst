@@ -95,7 +95,8 @@ hard line between build and deploy required by the `12factor`_ method.
 
 Language specific package managers solve the packaging problem seen
 through git+ssh, but they still require tooling to distribute assets,
-change default configurations, and run database migrations.
+change default configurations, and run database migrations. They also a
+restricted to packaging a single specific language.
 
 These issues can be seen in the rising idiom of: ``curl install.sh | bash``.
 
@@ -103,29 +104,29 @@ These issues can be seen in the rising idiom of: ``curl install.sh | bash``.
 Tarballs
 --------
 
-Tarballs have been used to distribute software for a long time.
+Similar to language specific packaging, tarballs are a single binary
+containing all the assets and code required for a project. Consequently
+they don't contain a version management system, nor any facility for
+upgrades or rollbacks.
 
-Similar to language specific packaging, they are a single binary
-containing all the assets and code required for a project. 
+As individual application deployment requirements change,
+tarballs can be used with more flexability than their language specific
+counterparts.
 
-They provided a few benefits over language packages. Because they are
-created outside the constrains of a specific language package manager,
-they can contain files from multiple projects, and languages, including
-other binaries. Extractions are not restricted to language specific
-installation directories.
+Because they can contain other binaries, application, and even code
+written in other languages. Installation is not restricted to language
+specific directories, and tooling can be easily applied granualarly
+since tarballs allow for extraction of individual files or directories.
 
-Tooling can be applied more granualarly as individual files or
-directories can be extracted.
-
-But they share some of the same problems with language packages. Extra
-tooling is required for deploying applications. They also don't contain a 
-version management system, nor any facility for upgrades or rollbacks.
-
+They share some of the same problems with language packages though.
+Extra tooling is still required for deploying applications. Because this
+tooling is kept with the appliction, it also creates a bootstrapping
+problem.
 
 Native Packages
 --------------
 
-Enter native packages!
+
 
 Native packages make the ideal world I described a reality. They benefit
 both developers and system administrators by allowing the developers to
