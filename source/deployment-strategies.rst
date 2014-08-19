@@ -83,25 +83,19 @@ developers eventually surpass syntax and semantics and foray into
 debuggers, linters, and package managers.
 
 Language specific package managers, such as pip, gem and npm, provide a
-lot of benefit to developers: packaging, installation, version and
-dependency management, and most of all distribution.
+lot of benefits over git+ssh to developers: version and dependency
+management, clear rollback and upgrade paths, and most of all
+distribution.
 
-These package managers allow developers to distribute a single binary of
-code, configuration, and assets; providing the distinction between
-build and deploy required by `12factor`_. They also make upgrading and
-downgrading applications quite easy.
+By bundling code, configuration and assets into a single binary, package
+managers allow developers to easily distribute their code. They draw a
+hard line between build and deploy required by the `12factor`_ method.
 
-When everything is bundled together, it can be a great, but it can also
-be painful.
+Language specific package managers solve the packaging problem seen
+through git+ssh, but they still require tooling to distribute assets,
+change default configurations, and run database migrations.
 
-Usually after an application is installed a few actions need to happen.
-Configuration files moved, static assets uploaded to another
-server, or database migrations run. Few language specific package
-managers support post-install (or even pre-install) scripts from being
-ran. Some developers get around this by using a deployment script that
-handles the entire appliction. This is similar to the rising idiom of
-``curl install.sh | bash``. Others have the deployment tooling handle
-the post-install actions.
+These issues can be seen in the rising idiom of: ``curl install.sh | bash``.
 
 
 Tarballs
