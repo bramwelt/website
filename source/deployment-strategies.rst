@@ -123,10 +123,9 @@ Extra tooling is still required for deploying applications. Because this
 tooling is kept with the appliction, it also creates a bootstrapping
 problem.
 
+
 Native Packages
 --------------
-
-
 
 Native packages make the ideal world I described a reality. They benefit
 both developers and system administrators by allowing the developers to
