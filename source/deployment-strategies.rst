@@ -117,6 +117,27 @@ by external tools such as Capestrano and Fabric, or even the rising
 idiom of ``curl install.sh | bash``
 
 
+Native Packages
+--------------
+
+Enter native packages!
+
+Native packages make the ideal world I described a reality. They benefit
+both developers and system administrators by allowing the developers to
+succinctly define how their application gets setup and torn down, and
+relieving system administrators the headache of managing fickle
+deployment configuration systems.
+
+There are not extra deployment scripts to manage, and the `12factor`_
+pattern of keeping build and deploys separate is maintained.
+
+Hosting an internal package server can also provide the benefit of
+mitigating Man-in-the-Middle attacks. Binaries are signed and uploaded
+to the package server, and downloaded by the application server.
+Signatures are checked by the application server, and invalid signatures
+stop malicious code from being installed.
+
+
 Ideal World
 -----------
 
@@ -159,53 +180,3 @@ files to the right place.
 .. _racktables: https://github.com/osuosl-cookbooks/racktables/blob/v0.3.2/recipes/source.rb
 
 Maybe, just maybe, there's a way we can get there.
-
-
-Native Packages
---------------
-
-Enter native packages!
-
-Native packages make the ideal world I described a reality. They benefit
-both developers and system administrators by allowing the developers to
-succinctly define how their application gets setup and torn down, and
-relieving system administrators the headache of managing fickle
-deployment configuration systems.
-
-There are not extra deployment scripts to manage, and the `12factor`_
-pattern of keeping build and deploys separate is maintained.
-
-Hosting an internal package server can also provide the benefit of
-mitigating Man-in-the-Middle attacks. Binaries are signed and uploaded
-to the package server, and downloaded by the application server.
-Signatures are checked by the application server, and invalid signatures
-stop malicious code from being installed.
-
-
-Vision for Socorro
-------------------
-
-Right now I am interning at Mozilla and working on `Socorro`_: a distributed
-system for collecting, analyzing, and viewing crash reports submitted
-by `Breakpad`_. Part of my work involves making deployments of Socorro
-`easier`_.
-
-Socorro is installed by downloading a `deploy.sh` script on a server,
-and pointing it to a tarball of Socorro. The tarball is downloaded,
-extracted, and installed, while the deploy script does some heavy
-lifting: ensuring dependencies are installed, creating users, setting
-permissions, and copying around configuration files.
-
-The deploy script does what most package managers do using *{pre,post}
-install* scripts. My plan is to combine both the tarball and deploy
-script into a single package using `fpm`_ so that deployments can be as
-simple as:
-
-.. code-block:: bash
-    $ wget https://example.com/socorro.deb
-    $ dpkg -i socorro.deb
-
-.. _easier: https://bugzilla.mozilla.org/show_bug.cgi?id=1055268
-.. _Breakpad: https://code.google.com/p/google-breakpad/
-.. _Socorro: https://wiki.mozilla.org/Socorro
-.. _fpm: https://github.com/jordansissel/fpm
