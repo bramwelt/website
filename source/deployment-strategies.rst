@@ -1,3 +1,5 @@
+.. _deployment-strategies:
+
 You Should Be Using Native Packages
 ===================================
 
