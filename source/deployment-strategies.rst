@@ -80,7 +80,7 @@ easier.
 Language Package
 ----------------
 
-When learning a modern language like ruby or npm for the first time,
+When learning a modern language like ruby or node.js for the first time,
 developers eventually surpass syntax and semantics and foray into
 debuggers, linters, and package managers.
 
