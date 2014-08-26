@@ -125,7 +125,7 @@ problem.
 
 
 Native Packages
---------------
+---------------
 
 Native packages make the ideal world I described a reality. They benefit
 both developers and system administrators by allowing the developers to
