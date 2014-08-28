@@ -2,6 +2,8 @@
 
 Distribute Native Packages
 ==========================
+:date: Aug 28, 2014
+:author: Trevor Bramwell
 
 As a system administrator I deploy a lot of code. As web developer I
 write a lot of code. Yet these two parts of me are always at odds.
