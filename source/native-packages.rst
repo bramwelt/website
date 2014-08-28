@@ -138,17 +138,3 @@ introduce a new set of problems, theses can be resolved with few extra
 resources and a little bit of time. The benefits of distributing native
 packages far outweigh the costs, and will eventually save large amounts
 time spent on development and administration.
-
-
-Addendum: The Case for Language Specific Packages
--------------------------------------------------
-
-Most modern languages (like Python, Ruby, Node.js, and Haskell), also
-distribute their own package manager. If your web application is
-written in one of these languages, consider using the language specific
-package manager first. These provide versioning, dependency management,
-and distribution.
-
-But as soon configuration files, compiled assets, or any file that need
-to be moved outside the directory after install, is required, start
-transitioning to using native packages.
