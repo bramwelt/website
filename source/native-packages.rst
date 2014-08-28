@@ -4,7 +4,7 @@ Distribute Native Packages
 ==========================
 
 As a system administrator I deploy a lot of code. As web developer I
-write a lot of code. Yet these two parts of me, are always at odds.
+write a lot of code. Yet these two parts of me are always at odds.
 
 When working on web applications the system administrator in me says
 "Just ship it!"
