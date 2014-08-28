@@ -24,9 +24,11 @@ on my book_, or dancing.
 .. _ganeti: https://code.google.com/p/ganeti
 
 
-.. toctree::
-    :hidden:
-    :maxdepth: 2
+Posts
+-----
 
-    open-source-contributing
+.. toctree::
+    :maxdepth: 1
+
     native-packages
+    open-source-contributing
