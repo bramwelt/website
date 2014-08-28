@@ -40,8 +40,8 @@ strategies:
  #. Maintainability
 
 
-Security
---------
+1. Security
+-----------
 
 The first benefit native package provide is security. This is an
 optional benefit, as signing packages does not preclude them from being
@@ -71,8 +71,8 @@ By using signed native packages instead, you can verify two things:
 This is because servers installing the package will already contain the
 author's public key. 
 
-Modularity
-----------
+2. Modularity
+-------------
 
 Modularity is the second benefit native packages provide.
 
@@ -93,8 +93,8 @@ server, these scripts - which are packaged with the application - execute
 during upgrades (installing a new version) and rollbacks (downgrading
 versions).
 
-Maintainability
----------------
+3. Maintainability
+------------------
 
 The final benefit native packages provide, is maintainability.
 
