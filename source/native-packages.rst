@@ -1,7 +1,7 @@
 .. _native-packages:
 
-Why You Should Distribute Native Packages
-=========================================
+Distribute Native Packages
+==========================
 
 As a system administrator I deploy a lot of code. As web developer I
 write a lot of code. Yet these two parts of me, are always at odds.
