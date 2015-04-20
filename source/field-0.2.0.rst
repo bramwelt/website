@@ -4,12 +4,12 @@ Field - extract fields from a file
 ==================================
 
 I recently put the final touches on a python project I've been working
-on since February, and I am happy to announce the ``0.2.0`` release of
-Field!
+on since February, and I am happy to announce the *0.2.0* release of
+field!
 
 `field`_ is a command-line application for extracting fields from
 files. It was written to be a simpler version of ``awk '{ print COLUMN;
-... }'``, and address some of the shortcoming of `cut`_, such as field
+... }'``, and address some of the shortcomings of `cut`_, such as field
 ordering, whitespace squashing, and repeated output.
 
 Examples
@@ -35,7 +35,7 @@ Extract pid, cpu percent, pid, and command (in that order)::
     2196  0.0   bramwelt  nm-applet
     ...
 
-Extract user, shell, homedir, uid and gid from ``/etc/passwd`` using ':'
+Extract user, shell, homedir, uid and gid from ``/etc/passwd`` using *':'*
 as the delimiter::
 
     $ field -f /etc/passwd -d':' 1 7-6 4,3 | column -t
@@ -65,7 +65,7 @@ For a site-wide install, use::
 Contributing
 ------------
 
-Field is free software and licensed under the GLPv3 (or later). The
+Field is free software and licensed under the GLPv3 (*or later*). The
 source can be found on `github`_. If you find any bugs or would like to
 suggest improvements, please submit an `issue`_ and I'll do my best to
 address it!

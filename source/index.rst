@@ -30,5 +30,6 @@ Posts
 .. toctree::
     :maxdepth: 1
 
+    field-0.2.0
     native-packages
     open-source-contributing
