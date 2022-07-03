@@ -2,6 +2,10 @@
 Trevor Bramwell
 ===============
 
+.. image:: https://readthedocs.org/projects/trevorbramwellnet/badge/?version=latest
+:target: https://trevor.bramwell.net/en/latest/?badge=latest
+:alt: Documentation Status
+
 This is the repository for my website at `trevor.bramwell.net`_. I am
 using `Sphinx`_ as the provider for my website for three reasons:
 
